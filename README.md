@@ -2,7 +2,8 @@
 
 ## Authors
 1) Cesar Martinez
-2) Long Nguyen
+2) Jamar Oldacre
+3) Long Nguyen
 
 ## To Run
 

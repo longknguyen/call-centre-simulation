@@ -17,6 +17,11 @@ java -jar path/to/jar/file.jar
 * Contribution 2
 * Contribution 3
 
+### [Jamar Oldacre]
+* Contribution 1
+* Contribution 2
+* Contribution 3
+
 ### [Long Nguyen]
 * Contribution 1
 * Contribution 2

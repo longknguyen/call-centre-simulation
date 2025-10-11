@@ -15,8 +15,9 @@ public class RandomVariableGenerator {
      * @return a string representing the outcome (e.g. 'unavailable', 'voicemail', 'answered')
      */
     public static String discreteOutcome(double u) {
-        // TODO
-        return "";
+        return u < P_VOICEMAIL
+                ? "voicemail"
+                : (P_VOICEMAIL + P_UNAVAILABLE > u ? "unavailable" : "answered");
     }
 
     /**
@@ -26,7 +27,7 @@ public class RandomVariableGenerator {
      * @return a sample from an exponential distribution with mean MEAN_EXP
      */
     public static double exponentialSample(double u) {
-        // TODO
-        return 0.0;
+        // See https://www.omscs-notes.com/simulation/random-variate-generation/?utm_source
+        return -MEAN_EXP * Math.log(1.0 - Math.max(u, 1e-15));
     }
 }

@@ -30,7 +30,7 @@ public class Main {
                 ));
 
         System.out.println("\n\nDiscrete & exponential samples from u51,u52,u53:");
-        IntStream.range(50, 54).forEach(i -> {
+        IntStream.range(50, 53).forEach(i -> {
             String outcome = RandomVariableGenerator.discreteOutcome(uValues[i]);
             double expSample = RandomVariableGenerator.exponentialSample(uValues[i]);
             System.out.printf(

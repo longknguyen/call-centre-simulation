@@ -21,8 +21,8 @@ public class LCG {
         this.a = a;
         this.c = c;
         this.k = k;
-        //this.x = seed;
-        reset(seed);
+        this.x = seed;
+        // reset(seed);
     }
 
     /**
@@ -31,7 +31,10 @@ public class LCG {
      * @return a uniform random number between 0 (inclusive) and 1 (exclusive)
      */
     public double nextUniform() {
-        // TODO implement  x_{n+1} = (a * x_n + c) mod k
+        x = (a * x + c) % k;
+        return (double) x / (double) k;
+
+        /*// TODO implement  x_{n+1} = (a * x_n + c) mod k
 
         BigInteger A = BigInteger.valueOf(a);
         BigInteger C = BigInteger.valueOf(c);
@@ -42,7 +45,7 @@ public class LCG {
 
         nextplus1Output = nextplus1.longValue()
 
-        return (double) nextplus1Output / (double) k
+        return (double) nextplus1Output / (double) k*/
     }
 
     /**
@@ -52,9 +55,9 @@ public class LCG {
      */
     public void reset(long seed) {
         //make the reset to normalize to [0, k)
+        this.x = seed;
+        /*long r = seed % k;
 
-        long r = seed % k;
-
-        this.x = (r < 0) ? r + k : r;
+        this.x = (r < 0) ? r + k : r;*/
     }
 }

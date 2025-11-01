@@ -1,5 +1,9 @@
 package edu.virginia.apma.probability;
 
+import java.util.Arrays;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
 /**
  * A utility class for basic statistical operations.
  */
@@ -12,8 +16,9 @@ public class Statistics {
      * @return the mean of the numbers in the array
      */
     public static double mean(double[] arr) {
-        // TODO
-        return 0.0;
+        return Arrays.stream(arr)
+                .average()
+                .orElse(0);
     }
 
     /**
@@ -24,8 +29,17 @@ public class Statistics {
      * @return the p-th percentile value
      */
     public static double percentile(double[] sorted, double p) {
-        // TODO
-        return 0.0;
+        double pos = p * (sorted.length + 1) / 100.0;
+
+        if (pos <= 1)
+            return sorted[0];
+        if (pos >= sorted.length)
+            return sorted[sorted.length - 1];
+
+        int lower = (int) Math.floor(pos) - 1;
+        int upper = lower + 1;
+        double frac = pos - Math.floor(pos);
+        return sorted[lower] + frac * (sorted[upper] - sorted[lower]);
     }
 
     /**
@@ -37,8 +51,9 @@ public class Statistics {
      * @return the proportion of values ≤ t
      */
     public static double probLE(double[] sorted, double t) {
-        // TODO
-        return 0.0;
+        return (double) Arrays.stream(sorted)
+                .filter(v -> v <= t + 1e-12)
+                .count() / sorted.length;
     }
 
     /**
@@ -49,7 +64,6 @@ public class Statistics {
      * @return the proportion of values > t
      */
     public static double probGT(double[] sorted, double t) {
-        // TODO
-        return 0.0;
+        return 1.0 - probLE(sorted, t);
     }
 }

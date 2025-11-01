@@ -19,7 +19,7 @@ public class CallSimulation {
      * @param rng a pseudo-random number generator
      */
     public CallSimulation(LCG rng) {
-        // this.rng = rng;
+        this.rng = rng;
     }
 
     /**
@@ -29,7 +29,28 @@ public class CallSimulation {
      * @return total time taken for the customer's call attempts (in seconds)
      */
     public double simulateCustomer() {
-        // TODO
-        return 0.0;
+        double total = 0.0;
+
+        for (int attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+            total += DIAL;
+            double u = rng.nextUniform();
+            String outcome = RandomVariableGenerator.discreteOutcome(u);
+
+            if (outcome.equals("voicemail"))
+                total += VOICEMAIL + HANGUP;
+            else if (outcome.equals("unavailable"))
+                total += RING + HANGUP;
+            else {
+                double u2 = rng.nextUniform();
+                double x = RandomVariableGenerator.exponentialSample(u2);
+                if (x > RING)
+                    total += RING + HANGUP;
+                else {
+                    total += x;
+                    return total;
+                }
+            }
+        }
+        return total;
     }
 }

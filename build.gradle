@@ -14,10 +14,10 @@ plugins {
 group = 'edu.virginia.apma.probability'
 version = '1.0'
 
-sourceCompatibility = '22'
+sourceCompatibility = '21'
 
 application {
-    mainClass = 'edu.virginia.apma.Main'
+    mainClass = 'edu.virginia.apma.probability.Main'
 }
 
 repositories {

@@ -41,5 +41,12 @@ public class Main {
                     expSample
             );
         });
+
+        rng.reset(seed);
+        CallSimulation sim = new CallSimulation(rng);
+        int N = 1000;
+        double[] W = new double[N];
+        for (int i = 0; i < N; i++)
+            W[i] = sim.simulateCustomer();
     }
 }

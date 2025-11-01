@@ -19,7 +19,7 @@ public class CallSimulation {
      * @param rng a pseudo-random number generator
      */
     public CallSimulation(LCG rng) {
-        this.rng = rng;
+        // this.rng = rng;
     }
 
     /**

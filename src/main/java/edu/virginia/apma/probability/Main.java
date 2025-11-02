@@ -1,5 +1,6 @@
 package edu.virginia.apma.probability;
 
+import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class Main {
@@ -48,5 +49,31 @@ public class Main {
         double[] W = new double[N];
         for (int i = 0; i < N; i++)
             W[i] = sim.simulateCustomer();
+
+        W = Arrays.stream(W)
+                .boxed()
+                .sorted(Double::compare)
+                .mapToDouble(Double::doubleValue)
+                .toArray();
+
+        double mean = Statistics.mean(W);
+        double q1 = Statistics.percentile(W, 25);
+        double median = Statistics.percentile(W, 50);
+        double q3 = Statistics.percentile(W, 75);
+
+        // Right-hand Tail
+        double w5 = Statistics.percentile(W, 85);
+        double w6 = Statistics.percentile(W, 90);
+        double w7 = Statistics.percentile(W, 95);
+
+        System.out.println("\nSimulation Results:");
+        System.out.printf("Mean=%.4f, Q1=%.4f, Median=%.4f, Q3=%.4f\n", mean, q1, median, q3);
+        System.out.printf("P(W <= 15)=%.4f\n", Statistics.probLE(W,15));
+        System.out.printf("P(W <= 20)=%.4f\n", Statistics.probLE(W,20));
+        System.out.printf("P(W <= 30)=%.4f\n", Statistics.probLE(W,30));
+        System.out.printf("P(W > 40)=%.4f\n", Statistics.probGT(W,40));
+        System.out.printf("P(W > %.2f) = %.4f\n", w5, Statistics.probGT(W, w5));
+        System.out.printf("P(W > %.2f) = %.4f\n", w6, Statistics.probGT(W, w6));
+        System.out.printf("P(W > %.2f) = %.4f\n", w7, Statistics.probGT(W, w7));
     }
 }

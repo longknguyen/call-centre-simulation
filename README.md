@@ -10,5 +10,5 @@
 ### Examples
 ```bash
 # General Usuage
-java -jar path/to/jar/file.jar
+./gradlew run
 ```

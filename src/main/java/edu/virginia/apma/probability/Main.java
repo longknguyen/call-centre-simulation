@@ -56,7 +56,7 @@ public class Main {
                 .mapToDouble(Double::doubleValue)
                 .toArray();
 
-        // Arrays.stream(W).forEach(System.out::println);
+        Arrays.stream(W).forEach(System.out::println);
 
         double mean = Statistics.mean(W);
         double q1 = Statistics.percentile(W, 25);
@@ -70,9 +70,9 @@ public class Main {
 
         System.out.println("\nSimulation Results:");
         System.out.printf("Mean=%.4f, Q1=%.4f, Median=%.4f, Q3=%.4f\n", mean, q1, median, q3);
-        System.out.printf("P(W <= 15)=%.4f\n", Statistics.probLE(W,15));
-        System.out.printf("P(W <= 20)=%.4f\n", Statistics.probLE(W,20));
-        System.out.printf("P(W <= 30)=%.4f\n", Statistics.probLE(W,30));
+        System.out.printf("P(W ≥ 15)=%.4f\n", Statistics.probLE(W,15));
+        System.out.printf("P(W ≥ 20)=%.4f\n", Statistics.probLE(W,20));
+        System.out.printf("P(W ≥ 30)=%.4f\n", Statistics.probLE(W,30));
         System.out.printf("P(W > 40)=%.4f\n", Statistics.probGT(W,40));
         System.out.printf("P(W > %.2f) = %.4f\n", w5, Statistics.probGT(W, w5));
         System.out.printf("P(W > %.2f) = %.4f\n", w6, Statistics.probGT(W, w6));

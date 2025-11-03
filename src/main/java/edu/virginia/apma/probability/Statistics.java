@@ -18,7 +18,7 @@ public class Statistics {
     public static double mean(double[] arr) {
         return Arrays.stream(arr)
                 .average()
-                .orElse(0);
+                .orElse(0.0);
     }
 
     /**

@@ -41,8 +41,8 @@ public class CallSimulation {
             else if (outcome.equals("unavailable"))
                 total += RING + HANGUP;
             else {
-                double u2 = rng.nextUniform();
-                double x = RandomVariableGenerator.exponentialSample(u2);
+                // double u2 = rng.nextUniform();
+                double x = RandomVariableGenerator.exponentialSample(u);
                 if (x > RING)
                     total += RING + HANGUP;
                 else {

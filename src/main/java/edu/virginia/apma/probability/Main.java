@@ -56,6 +56,8 @@ public class Main {
                 .mapToDouble(Double::doubleValue)
                 .toArray();
 
+        // Arrays.stream(W).forEach(System.out::println);
+
         double mean = Statistics.mean(W);
         double q1 = Statistics.percentile(W, 25);
         double median = Statistics.percentile(W, 50);
